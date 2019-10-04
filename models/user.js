@@ -1,30 +1,31 @@
-// Requiring necessary npm packages
-var express = require("express");
-var session = require("express-session");
-// Requiring passport as we've configured it
-var passport = require("./config/passport");
-
-// Setting up port and requiring models for syncing
-var PORT = process.env.PORT || 8080;
-var db = require("./models");
-
-// Creating express app and configuring middleware needed for authentication
-var app = express();
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(express.static("public"));
-// We need to use sessions to keep track of our user's login status
-app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
-app.use(passport.initialize());
-app.use(passport.session());
-
-// Requiring our routes
-require("./routes/html-routes.js")(app);
-require("./routes/api-routes.js")(app);
-
-// Syncing our database and logging a message to the user upon success
-db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
-    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+// Requiring bcrypt for password hashing. Using the bcryptjs version as the regular bcrypt module sometimes causes errors on Windows machines
+var bcrypt = require("bcryptjs");
+// Creating our User model
+module.exports = function(sequelize, DataTypes) {
+  var User = sequelize.define("User", {
+    // The email cannot be null, and must be a proper email before creation
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true
+      }
+    },
+    // The password cannot be null
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   });
-});
+  // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
+  User.prototype.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+  };
+  // Hooks are automatic methods that run during various phases of the User Model lifecycle
+  // In this case, before a User is created, we will automatically hash their password
+  User.addHook("beforeCreate", function(user) {
+    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+  });
+  return User;
+};
