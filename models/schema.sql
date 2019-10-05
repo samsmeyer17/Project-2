@@ -1,3 +1,12 @@
 DROP DATABASE IF EXISTS workoutdb;
 CREATE DATABASE workoutdb;
 USE workoutdb;
+
+CREATE TABLE users (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(300) NOT NULL,
+  age INT (10) NOT NULL,
+  email VARCHAR (300) NOT NULL,
+  password VARCHAR (300) NOT NULL,
+);
+

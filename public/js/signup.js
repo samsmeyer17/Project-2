@@ -13,7 +13,7 @@ $(document).ready(function() {
       name: nameInput.val().trim(),
       age: ageInput.val().trim(),
       email: emailInput.val().trim(),
-      password: passwordInput.val().trim()
+      password: passwordInput.val().trim(),
     };
 
     if (!userData.email || !userData.password) {
