@@ -18,8 +18,8 @@ module.exports = function(app) {
   // otherwise send back an error
   app.post("/api/signup", passport.authenticate("local"), function(req, res) {
     db.User.create({
-      // name: req.body.name,
-      // age: req.body.age,
+      name: req.body.name,
+      age: req.body.age,
       email: req.body.email,
       password: req.body.password,
     })
@@ -37,7 +37,7 @@ module.exports = function(app) {
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();
-    res.redirect("/home");
+    res.redirect("/");
   });
 
   // Route for getting some data about our user to be used client side
@@ -49,8 +49,8 @@ module.exports = function(app) {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
-        // name: req.user.name,
-        // age: req.user.age,
+        name: req.user.name,
+        age: req.user.age,
         email: req.user.email,
         id: req.user.id
       });
