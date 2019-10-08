@@ -19,33 +19,27 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <h2>Sign Up Form</h2>
-        <form class="signup">
+        <h2>Add A Workout!</h2>
+        <form class="workout">
           <div class="form-group">
-            <label for="exampleInputEmail1">Name</label>
-            <input type="text" class="form-control" id="name-input" placeholder="John Doe">
+            <label for="exampleInputEmail1"></label>
+            <input type="text" class="form-control" id="stroke-input" placeholder="Butterfly">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Age</label>
-            <input type="integer" class="form-control" id="age-input" placeholder="24">
+            <label for="exampleInputEmail1">Distance</label>
+            <input type="integer" class="form-control" id="distance-input" placeholder="200">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="email-input" placeholder="Email">
-          </div>
-
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="password-input">
+            <label for="exampleInputEmail1">Time Interval</label>
+            <input type="datetime" class="form-control" id="time-input" placeholder="1:30">
           </div>
           <div style="display: none" id="alert" class="alert alert-danger" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <span class="sr-only">Error:</span> <span class="msg"></span>
           </div>
-          <button type="submit" class="btn btn-default">Sign Up</button>
         </form>
         <br />
-        <p>Or log in <a href="/login">here</a></p>
+        <button><a href="/members">Add workout</a></button>
       </div>
     </div>
   </div>
