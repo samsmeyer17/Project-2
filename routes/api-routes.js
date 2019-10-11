@@ -54,6 +54,20 @@ module.exports = function(app) {
   });
 
   // api routes for logging workouts
-  app.post("/api/newWorkout")
-};
+  app.post("/api/newWorkout", function(req, res) {
+    console.log("api workout route hit");
+    db.workouts.create(req.body)
+    });
 
+  app.get("/api/workoutData", function(req, res) {
+    console.log("api workout retrieval route hit")
+    res.json({
+      stroke: req.workouts.stroke,
+      distance: req.workouts.distance,
+      reps: req.workouts.reps,
+      interval: req.workouts.interval,
+      id: req.workouts.id
+    });
+    console.log(res.json)
+  });
+};

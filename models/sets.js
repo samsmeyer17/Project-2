@@ -1,7 +1,5 @@
-
-// Creating our workouts model
 module.exports = function(sequelize, DataTypes) {
-  var workouts = sequelize.define("workouts", {
+  var workouts = sequelize.define("set", {
     // the stroke of the workout
     stroke: {
       type: DataTypes.STRING,
