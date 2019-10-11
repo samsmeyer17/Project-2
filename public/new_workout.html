@@ -10,9 +10,15 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default" style="background: turquoise; font-family:fantasy">
     <div class="container-fluid">
-      <div class="navbar-header">
+      <div class="navbar-header col-12">
+        <div>
+          <h1 id="header-title">
+            Swim Tracker
+          </h1>
+
+        </div>
       </div>
     </div>
   </nav>
@@ -20,32 +26,42 @@
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <h2>Add A Workout!</h2>
-        <form class="workout">
-          <div class="form-group">
-            <label for="exampleInputEmail1"></label>
-            <input type="text" class="form-control" id="stroke-input" placeholder="Butterfly">
+        <div class="card">
+          <div class="card-body bg-info">
+            <form class="workout">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Distance</label>
+                <input type="integer" class="form-control" id="distance-input" placeholder="200">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Stroke</label>
+                <input type="text" class="form-control" id="stroke-input" placeholder="Butterfly">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Repetitions</label>
+                <input type="integer" class="form-control" id="reps-input" placeholder="10">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Time Interval</label>
+                <input type="datetime" class="form-control" id="time-input" placeholder="1:30">
+              </div>
+              <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span> <span class="msg"></span>
+              </div>
+            </form>
+            <br />
+            <button type="submit" id="new-set-btn">Add a new set</button>
+            <button type="submit" id="add-workout-btn"><a href="/members">Add workout</a></button>
+            <button type="submit" id="back-btn"><a href="/members"></a>Back</button>
           </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Distance</label>
-            <input type="integer" class="form-control" id="distance-input" placeholder="200">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Time Interval</label>
-            <input type="datetime" class="form-control" id="time-input" placeholder="1:30">
-          </div>
-          <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <span class="sr-only">Error:</span> <span class="msg"></span>
-          </div>
-        </form>
-        <br />
-        <button><a href="/members">Add workout</a></button>
+        </div>
       </div>
     </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/signup.js"></script>
+  <script type="text/javascript" src="js/new_workout.js"></script>
 
 </body>
 

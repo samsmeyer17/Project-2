@@ -12,6 +12,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    reps: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
     timeInterval: {
       type: DataTypes.INTEGER,
       allowNull: true

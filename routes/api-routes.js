@@ -52,5 +52,8 @@ module.exports = function(app) {
       });
     }
   });
+
+  // api routes for logging workouts
+  app.post("/api/newWorkout")
 };
 
