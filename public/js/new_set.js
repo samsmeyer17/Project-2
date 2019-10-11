@@ -1,55 +1,55 @@
-$(document).ready(function() {
-  var newWorkoutForm = $("form.workout");
+$(document).ready(function () {
+  var newsetsForm = $("form.sets");
   var strokeInput = $("input#stroke-input");
   var distanceInput = $("input#distance-input");
   var repsInput = $("input#reps-input");
   var intervalInput = $("input#time-input");
 
-  $("#add-workout-button").on("submit", function(event) {
-    console.log("workout submitted");
+  $("#new-set-button").on("submit", function (event) {
+    console.log("sets submitted");
     event.preventDefault();
-    var workoutData = {
+    var setsData = {
       stroke: strokeInput.val().trim(),
       distance: distanceInput.val().trim(),
       reps: repsInput.val().trim(),
       interval: intervalInput.val().trim()
     };
-    console.log(workoutData);
-    if (!workoutData.stroke || !workoutData.distance) {
+    console.log(setsData);
+    if (!setsData.stroke || !setsData.distance) {
       return;
     }
-    logWorkout(workoutData.stroke, workoutData.distance, workoutData.reps, workoutData.interval);
+    logsets(setsData.stroke, setsData.distance, setsData.reps, setsData.interval);
     strokeInput.val("");
     distanceInput.val("");
     repsInput.val("");
     intervalInput.val("");
-    
-    workoutDataRetrieval(workoutData.stroke, workoutData.distance, workoutData.reps, workoutData.interval);
+
+    setsDataRetrieval(setsData.stroke, setsData.distance, setsData.reps, setsData.interval);
   });
 
-  function logWorkout(stroke, distance, reps, interval) {
-    console.log("function log Workout called");
-    $.post("/api/newWorkout", {
+  function logsets(stroke, distance, reps, interval) {
+    console.log("function log sets called");
+    $.post("/api/newsets", {
       stroke: stroke,
       distance: distance,
       reps: reps,
       interval: interval
-    }).then(function(data)  {
-      console.log("yay workout logged");
+    }).then(function (data) {
+      console.log("yay sets logged");
       window.location.replace("/members");
     })
-    .catch(err => handleWorkoutErr(err))
+      .catch(err => handlesetsErr(err))
   }
 
-  function handleWorkoutErr(err) { 
+  function handlesetsErr(err) {
     $("#alert .msg").text(err.responseJSON);
     $("#alert").fadeIn(500);
   }
 
-  function workoutDataRetrieval() {
-    $.get("/api/workoutData").then(function(data) {
-      $("#workout-slot").text("You did: " + data.reps + " X " + data.distance + "'s " + data.stroke + ". On the " + data.interval + "! Nice Job!")
+  function setsDataRetrieval() {
+    $.get("/api/setsData").then(function (data) {
+      $("#sets-slot").text("You did: " + data.reps + " X " + data.distance + "'s " + data.stroke + ". On the " + data.interval + "! Nice Job!")
     });
   };
-  
+
 });

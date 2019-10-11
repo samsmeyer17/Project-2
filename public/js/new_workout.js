@@ -48,7 +48,7 @@ $(document).ready(function() {
 
   function workoutDataRetrieval() {
     $.get("/api/workoutData").then(function(data) {
-      $("#workout-slot").text("You did: " + data.reps + " X " + data.distance + "'s " + data.stroke + ". On the " + data.interval + "! Nice Job!")
+      $("#workout-area").text("You did: " + data.reps + " X " + data.distance + "'s " + data.stroke + ". On the " + data.interval + "! Nice Job!")
     });
   };
   
