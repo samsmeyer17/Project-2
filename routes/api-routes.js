@@ -2,11 +2,11 @@
 var db = require("../models");
 var passport = require("../config/passport");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
-  app.post("/api/login", passport.authenticate("local"), function(req, res) {
+  app.post("/api/login", passport.authenticate("local"), function (req, res) {
     res.json(req.user);
   });
   // app.post("/api/signup", passport.authenticate("local"), function(req, res) {
@@ -16,28 +16,28 @@ module.exports = function(app) {
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
-  app.post("/api/signup", function(req, res) {
+  app.post("/api/signup", function (req, res) {
     console.log("api signup route hit")
     db.User.create(req.body)
-      .then(function() {
+      .then(function () {
         console.log("then");
-        
+
         res.redirect(307, "/api/login");
       })
-      .catch(function(err) {
+      .catch(function (err) {
         console.log(err);
         res.status(401).json(err);
       });
   });
 
   // Route for logging user out
-  app.get("/logout", function(req, res) {
+  app.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/");
   });
 
   // Route for getting some data about our user to be used client side
-  app.get("/api/user_data", function(req, res) {
+  app.get("/api/user_data", function (req, res) {
     if (!req.user) {
       // The user is not logged in, send back an empty object
       res.json({});
@@ -52,21 +52,49 @@ module.exports = function(app) {
       });
     }
   });
-
+  
   // api routes for logging workouts
-  app.post("/api/newWorkout", function(req, res) {
+  app.post("/api/newWorkout", function (req, res) {
     console.log("api workout route hit");
     db.workouts.create(req.body)
-    });
+      .then(function(result){
+        res.json(result)
+      })
+      .catch(function(err){
+        console.log(err)
+      })
+  });
 
-  app.get("/api/workoutData", function(req, res) {
+  app.get("/api/workoutDataRetrieve", function (req, res) {
     console.log("api workout retrieval route hit")
     res.json({
-      stroke: req.workouts.stroke,
-      distance: req.workouts.distance,
-      reps: req.workouts.reps,
-      interval: req.workouts.interval,
-      id: req.workouts.id
+      stroke: req.stroke,
+      distance: req.distance,
+      reps: req.reps,
+      interval: req.interval,
+      id: req.id
+    });
+  });
+
+  app.post("/api/newsets", function (req, res) {
+    console.log("api set route hit");
+    db.sets.create(req.body)
+    .then(function(result) {
+      res.json(result)
+    })
+    .catch(function(err){
+      console.log(err)
+    })
+  });
+
+  app.get("/api/setDataRetrieve", function (req, res) {
+    console.log("api set retrieval route hit")
+    res.json({
+      stroke: req.stroke,
+      distance: req.distance,
+      reps: req.reps,
+      interval: req.interval,
+      id: req.id
     });
     console.log(res.json)
   });

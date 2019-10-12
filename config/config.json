@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "mey24875",
-    "database": "workoutdbb",
+    "database": "workoutdb",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

@@ -5,7 +5,7 @@ $(document).ready(function () {
   var repsInput = $("input#reps-input");
   var intervalInput = $("input#time-input");
 
-  $("#new-set-button").on("submit", function (event) {
+  $("#new-sets-btn").on("submit", function (event) {
     console.log("sets submitted");
     event.preventDefault();
     var setsData = {
