@@ -5,9 +5,6 @@ $(document).ready(function() {
     $(".member-name").text(data.name);
   });
 
-  $.get("/api/")
-
-
   $(document).ready(function() {
     var newWorkoutBtn = $("#newWorkoutBtn");
     
