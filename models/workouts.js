@@ -3,9 +3,9 @@
 module.exports = function(sequelize, DataTypes) {
   var workouts = sequelize.define("workouts", {
     // the stroke of the workouts
-    set: {
+    workout: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false
     }
   });
 

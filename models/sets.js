@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
     interval: {
       type: DataTypes.STRING,
       allowNull: true
-    }
+    },
   });
 
   sets.associate = function(models) {

@@ -68,8 +68,31 @@ module.exports = function (app) {
   app.get("/api/workoutDataRetrieve", function (req, res) {
     console.log("api workout retrieval route hit")
     res.json({
-      set: req.set
+      workout: req.workout
     });
+  });
+
+  app.get("/api/userWorkouts/:id", function (req, res) {
+    console.log("api workout retrieval route hit")
+    db.User.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [{
+        model: db.workouts,
+        include: [{
+          model: db.sets
+        }]  
+      }]
+    }).then(function(result){
+      console.log(result)
+      res.json(result)
+    }).catch(function(err){
+      console.log(err)
+    })
+    // res.json({
+    //   workout: req.workout
+    // });
   });
 
   app.post("/api/newsets", function (req, res) {
