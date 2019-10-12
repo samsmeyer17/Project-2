@@ -1,11 +1,11 @@
 $(document).ready(function () {
-  var newsetsForm = $("form.sets");
+  var newWorkoutsForm = $("form.workout");
   var strokeInput = $("input#stroke-input");
   var distanceInput = $("input#distance-input");
   var repsInput = $("input#reps-input");
   var intervalInput = $("input#time-input");
 
-  $("#new-sets-btn").on("submit", function (event) {
+  $(newWorkoutsForm).on("submit", function (event) {
     console.log("sets submitted");
     event.preventDefault();
     var setsData = {
@@ -36,7 +36,7 @@ $(document).ready(function () {
       interval: interval
     }).then(function (data) {
       console.log("yay sets logged");
-      window.location.replace("/members");
+      $("#sets-slot").text(data.reps + " X " + data.distance + "'s " + data.stroke + " on " + data.interval)
     })
       .catch(err => handlesetsErr(err))
   }
@@ -46,9 +46,9 @@ $(document).ready(function () {
     $("#alert").fadeIn(500);
   }
 
-  function setsDataRetrieval() {
+  function setsDataRetrieval(data) {
     $.get("/api/setsData").then(function (data) {
-      $("#sets-slot").text("You did: " + data.reps + " X " + data.distance + "'s " + data.stroke + ". On the " + data.interval + "! Nice Job!")
+      
     });
   };
 

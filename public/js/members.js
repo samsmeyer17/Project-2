@@ -5,4 +5,6 @@ $(document).ready(function() {
     $(".member-name").text(data.name);
   });
 
+  
+
 });

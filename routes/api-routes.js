@@ -68,11 +68,7 @@ module.exports = function (app) {
   app.get("/api/workoutDataRetrieve", function (req, res) {
     console.log("api workout retrieval route hit")
     res.json({
-      stroke: req.stroke,
-      distance: req.distance,
-      reps: req.reps,
-      interval: req.interval,
-      id: req.id
+      set: req.set
     });
   });
 
@@ -87,7 +83,7 @@ module.exports = function (app) {
     })
   });
 
-  app.get("/api/setDataRetrieve", function (req, res) {
+  app.get("/api/setData", function (req, res) {
     console.log("api set retrieval route hit")
     res.json({
       stroke: req.stroke,

@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     interval: {
-      type: DataTypes.INTEGER(20),
+      type: DataTypes.STRING,
       allowNull: true
     }
   });
