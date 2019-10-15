@@ -6,13 +6,13 @@ $(document).ready(function() {
   });
 
   $(document).ready(function() {
-    var newWorkoutBtn = $("#newWorkoutBtn");
+    var newWorkout = $("input#workoutName").val().trim();
     
-    $(newWorkoutBtn).on("click", function(event) {
+    $(newWorkout).on("submit", function(event) {
       console.log("workout submitted");
       event.preventDefault();
       var workoutData = {
-        workout: newWorkoutBtn.val() 
+        workout: newWorkout.val() 
       };
       console.log(workoutData);
       if (!workoutData.workout) {
