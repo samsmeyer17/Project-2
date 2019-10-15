@@ -36,7 +36,7 @@ $(document).ready(function () {
       interval: interval
     }).then(function (data) {
       console.log("yay sets logged");
-      $("#sets-slot").text(data.reps + " X " + data.distance + "'s " + data.stroke + " on " + data.interval)
+      
     })
       .catch(err => handlesetsErr(err))
   }
@@ -48,7 +48,7 @@ $(document).ready(function () {
 
   function setsDataRetrieval(data) {
     $.get("/api/setsData").then(function (data) {
-      
+      $("#sets-slot").text(data.reps + " X " + data.distance + "'s " + data.stroke + " on " + data.interval)
     });
   };
 
