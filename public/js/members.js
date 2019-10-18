@@ -5,8 +5,6 @@ $(document).ready(function () {
     $(".member-name").text(data.name);
   });
 
-
-
   var newWorkout = $("form.new-workout")
   var workoutName = $("input#workoutName");
 
@@ -32,22 +30,22 @@ $(document).ready(function () {
       })
         .catch(err => handleWorkoutErr(err))
     };
+
     function workoutDataRetrieval(workoutData) {
       $.get("/api/workoutDataRetieve", {
         workoutName: workoutName,
         workout: workout
       }).then(function(workoutData) {
         $("#workouts-area").append("<div>workoutName</div>")
+      }).catch(function(err) {
+        console.log(err)
       })
     };
+
     function handleWorkoutErr(err) {
       $("#alert .msg").text(err.responseJSON);
       $("#alert").fadeIn(500);
     }
-
     logWorkout(workoutData.workout, workoutData.workoutName);
-
     workoutDataRetrieval(workoutData.workout, workoutData.workoutName);
-
-    return;
   })});
