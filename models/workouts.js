@@ -17,7 +17,6 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
     models.workouts.hasMany(models.sets)
-
   };
 
   return workouts;
