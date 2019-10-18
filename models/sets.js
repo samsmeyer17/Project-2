@@ -17,6 +17,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true
     },
+    workoutId: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    }
   });
 
   sets.associate = function(models) {

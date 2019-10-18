@@ -68,7 +68,14 @@ module.exports = function (app) {
   app.get("/api/workoutDataRetrieve", function (req, res) {
     console.log("api workout retrieval route hit")
     res.json({
-      workout: req.workout
+      workout: req.workout,
+      workoutName: req.workoutName,
+      id: req.id
+    }).then(function(result) {
+      console.log(result);
+      res.json(result)
+    }).catch(function(err) {
+      console.log(err)
     });
   });
 

@@ -6,6 +6,10 @@ module.exports = function(sequelize, DataTypes) {
     workout: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    UserId: {
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
   });
 

@@ -5,7 +5,7 @@ $(document).ready(function () {
   var repsInput = $("input#reps-input");
   var intervalInput = $("input#time-input");
 
-  $(newWorkoutsForm).on("submit", function (event) {
+  newWorkoutsForm.on("submit", function (event) {
     console.log("sets submitted");
     event.preventDefault();
     var setsData = {
@@ -36,7 +36,6 @@ $(document).ready(function () {
       interval: interval
     }).then(function (data) {
       console.log("yay sets logged");
-      
     })
       .catch(err => handlesetsErr(err))
   }
@@ -47,7 +46,12 @@ $(document).ready(function () {
   }
 
   function setsDataRetrieval(data) {
-    $.get("/api/setsData").then(function (data) {
+    $.get("/api/setsData", {
+      stroke: stroke,
+
+
+    })
+    .then(function (data) {
       $("#sets-slot").text(data.reps + " X " + data.distance + "'s " + data.stroke + " on " + data.interval)
     });
   };
