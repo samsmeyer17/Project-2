@@ -3,13 +3,9 @@
 module.exports = function(sequelize, DataTypes) {
   var workouts = sequelize.define("workouts", {
     // the stroke of the workouts
-    workout: {
+    workoutName: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    UserId: {
-      type: DataTypes.INTEGER,
-      allowNull: true
     }
   });
 
@@ -23,5 +19,6 @@ module.exports = function(sequelize, DataTypes) {
     models.workouts.hasMany(models.sets)
 
   };
+
   return workouts;
 };

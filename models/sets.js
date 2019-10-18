@@ -16,10 +16,6 @@ module.exports = function(sequelize, DataTypes) {
     interval: {
       type: DataTypes.STRING,
       allowNull: true
-    },
-    workoutId: {
-      type: DataTypes.INTEGER,
-      allowNull: true
     }
   });
 

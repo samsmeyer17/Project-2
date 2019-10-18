@@ -13,7 +13,6 @@ $(document).ready(function () {
     event.preventDefault();
     var workoutData = {
       workoutName: workoutName.val().trim(),
-      workout: newWorkout.val().trim()
     };
     console.log(workoutData);
     if (!workoutData.workoutName) {
@@ -23,8 +22,7 @@ $(document).ready(function () {
     function logWorkout(workout) {
       console.log("function log Workout called");
       $.post("/api/newWorkout", {
-        workoutName: workoutName,
-        workout: workout
+        workoutName: workoutData.workoutName
       }).then(function (data) {
         window.location.replace("/new_workout");
       })
@@ -34,8 +32,7 @@ $(document).ready(function () {
     function workoutDataRetrieval(workoutData) {
       $.get("/api/workoutDataRetieve", {
         workoutName: workoutName,
-        workout: workout
-      }).then(function(workoutData) {
+      }).then(function(data) {
         $("#workouts-area").append("<div>workoutName</div>")
       }).catch(function(err) {
         console.log(err)
@@ -46,6 +43,9 @@ $(document).ready(function () {
       $("#alert .msg").text(err.responseJSON);
       $("#alert").fadeIn(500);
     }
-    logWorkout(workoutData.workout, workoutData.workoutName);
-    workoutDataRetrieval(workoutData.workout, workoutData.workoutName);
-  })});
+    logWorkout(workoutData.workoutName);
+    // workoutDataRetrieval(workoutData.workoutName);
+  })
+
+
+});
