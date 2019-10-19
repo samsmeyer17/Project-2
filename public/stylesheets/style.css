@@ -10,12 +10,23 @@ form.login {
 
 .navbar {
   background: turquoise;
-  color: darkblue
+  color: darkblue;
+  text-align: center
 }
 
 body {
   background: turquoise;
   color: darkblue
 }
+
+h2,a,h1 {
+  color: darkblue
+}
+
+.login-btn {
+  
+}
+
+
 
 
