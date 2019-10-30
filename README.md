@@ -30,6 +30,6 @@ This application will help swimmers (and in the future, other athletes) keep tra
 - Node.js
 
 **Comments**
-- Link to [Updated Portfolio](https://samsmeyer17.github.io/Responsive-Portfolio/)
+- Link to [Portfolio](https://samsmeyer17.github.io/Responsive-Portfolio/)
 
-- Link to [Heroku](https://still-depths-92325.herokuapp.com/)
+- Link to [Application via Heroku](https://still-depths-92325.herokuapp.com/)
